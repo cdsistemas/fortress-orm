@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 let connection;
 
 function getConnection(databaseUrl, options) {
-  if (connection) {
+  if (connection && !options.force) {
     return connection;
   }
   connection = new Sequelize(databaseUrl, {
